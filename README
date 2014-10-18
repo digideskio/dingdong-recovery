@@ -12,7 +12,7 @@ git brancn qcom
 http://pan.baidu.com/s/1sj8rpcL
 
 下载完成后，使用下列命令进行初始化:
-tar -xzf dingdong-recovery.tar.gz   # 解压缩tar.gz
+tar -xzf dingdong-recovery.tar.gz   # 解压缩dingong源码tar.gz
 git pull                            # 同步最新代码
 git checkout mtk					# 切换mtk分支
 git checkout qcom					# 切换qcom分支
@@ -26,5 +26,5 @@ git checkout qcom					# 切换qcom分支
     $ . build/envsetup.sh
     $ 按照教程进行制作
     $ make maguro
-  请看 out/patch_device/maguro/文件夹 , 找到生成 recovery.img 
+  请看 out/patch_device/maguro/文件夹 , 找到生成的dingdong-recovery.img 
 
