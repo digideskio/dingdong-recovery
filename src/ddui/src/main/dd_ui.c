@@ -96,7 +96,11 @@ static int dd_draw_homebanner(int x, int y, int w, int h) {
     ,
     acfg()->rec_device,
     acfg()->rec_version,
+#ifdef DD_USE_AUTHOR_INNER
+    DD_AUTHOR
+#else
     acfg()->rec_author
+#endif
     );
 	if (!atheme_id_draw(24, &dd_win_bg, x, y, w, h)){
 	    printf("Load home banner failed!\n");
@@ -2597,8 +2601,11 @@ Value* DD_INI_SET(const char* name, State* state, int argc, Expr* argv[]) {
   else if (strcmp(args[0],"battery_path") == 0)    	  snprintf(acfg()->battery_path, PATH_MAX, "%s", args[1]);
   else if (strcmp(args[0],"lun_file") == 0)     	  snprintf(acfg()->lun_file, PATH_MAX, "%s", args[1]);
   else if (strcmp(args[0],"reboot_cmd") == 0)         snprintf(acfg()->reboot_cmd,128,"%s", args[1]);
+  else if (strcmp(args[0],"bootloader_cmd") == 0)     snprintf(acfg()->bootloader_cmd,128,"%s", args[1]);
   
   else if (strcmp(args[0],"enable_usb") == 0)    	  acfg()->enable_usb=valkey;
+  else if (strcmp(args[0],"enable_sideload") == 0)    acfg()->enable_sideload=valkey;
+  else if (strcmp(args[0],"enable_reboot_bootloader") == 0)  acfg()->enable_bootloader=valkey;
   else if (strcmp(args[0],"support_root") == 0)    	  acfg()->root=valkey;
   else if (strcmp(args[0],"customkeycode_up")==0)     acfg()->ckey_up=valkey;
   else if (strcmp(args[0],"customkeycode_down")==0)   acfg()->ckey_down=valkey;
